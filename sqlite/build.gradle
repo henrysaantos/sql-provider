@@ -1,0 +1,13 @@
+group 'com.henryfabio.sql-provider'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":common")
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.xerial:sqlite-jdbc:3.32.3.2'
+}

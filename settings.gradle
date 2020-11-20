@@ -1,0 +1,5 @@
+rootProject.name = 'sql-provider'
+include 'common'
+include 'sqlite'
+include 'mysql'
+

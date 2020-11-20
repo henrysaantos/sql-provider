@@ -1,0 +1,36 @@
+group 'com.henryfabio'
+version '1.0.0-SNAPSHOT'
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        def lombok = 'org.projectlombok:lombok:1.18.12'
+        compileOnly lombok
+        annotationProcessor lombok
+
+        testCompileOnly lombok
+        testAnnotationProcessor lombok
+
+        def annotations = 'org.jetbrains:annotations:20.1.0'
+        compileOnly annotations
+        annotationProcessor annotations
+
+        testCompileOnly annotations
+        testAnnotationProcessor annotations
+    }
+
+    afterEvaluate {
+        tasks.withType(JavaCompile) {
+            options.encoding = 'UTF-8'
+        }
+
+    }
+
+}

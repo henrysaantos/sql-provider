@@ -1,0 +1,15 @@
+group 'com.henryfabio.sql-provider'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":common")
+
+    implementation('com.zaxxer:HikariCP:3.4.5')
+    implementation('org.slf4j:slf4j-api:1.7.25')
+
+    testCompile 'junit:junit:4.12'
+}
