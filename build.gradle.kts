@@ -5,7 +5,7 @@ plugins {
 group = "com.henryfabio"
 version = "1.0.1"
 
-allprojects {
+subprojects {
 
     plugins.apply("java")
 
