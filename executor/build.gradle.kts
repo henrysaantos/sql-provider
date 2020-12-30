@@ -1,7 +1,3 @@
-plugins {
-    java
-}
-
 repositories {
     mavenCentral()
 }

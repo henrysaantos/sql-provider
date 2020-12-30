@@ -1,5 +1,6 @@
 plugins {
-    java
+    id("java")
+    id("maven")
 }
 
 group = "com.henryfabio"
@@ -8,6 +9,7 @@ version = "1.0.1"
 subprojects {
 
     plugins.apply("java")
+    plugins.apply("maven")
 
     repositories {
         mavenCentral()
