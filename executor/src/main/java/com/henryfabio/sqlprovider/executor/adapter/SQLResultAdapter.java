@@ -2,8 +2,6 @@ package com.henryfabio.sqlprovider.executor.adapter;
 
 import com.henryfabio.sqlprovider.executor.result.SimpleResultSet;
 
-import java.sql.SQLException;
-
 /**
  * @author Henry Fábio
  */

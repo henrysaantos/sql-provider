@@ -25,7 +25,7 @@ subprojects {
         annotationProcessor("org.projectlombok:lombok:$lombokVersion")
         annotationProcessor("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
 
-        testImplementation("org.xerial:sqlite-jdbc:3.32.3.2")
+        testImplementation("org.xerial:sqlite-jdbc:3.25.2")
         testImplementation("mysql:mysql-connector-java:8.0.15")
     }
 

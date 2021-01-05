@@ -8,9 +8,6 @@ import com.henryfabio.sqlprovider.executor.statement.SimpleStatement;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
@@ -60,9 +57,9 @@ public final class SQLExecutor {
         return value.get();
     }
 
-    public <T> T oneResultQuery(String query,
-                             Consumer<SimpleStatement> consumer,
-                             Class<? extends SQLResultAdapter<T>> resultAdapterClass
+    public <T> T resultOneQuery(String query,
+                                Consumer<SimpleStatement> consumer,
+                                Class<? extends SQLResultAdapter<T>> resultAdapterClass
     ) {
         return resultQuery(query, consumer, resultSet -> {
             if (resultSet.next()) {
@@ -75,9 +72,9 @@ public final class SQLExecutor {
         });
     }
 
-    public <T> Set<T> manyResultQuery(String query,
-                                   Consumer<SimpleStatement> consumer,
-                                   Class<? extends SQLResultAdapter<T>> resultAdapterClass
+    public <T> Set<T> resultManyQuery(String query,
+                                      Consumer<SimpleStatement> consumer,
+                                      Class<? extends SQLResultAdapter<T>> resultAdapterClass
     ) {
         return this.resultQuery(query, consumer, resultSet -> {
             SQLResultAdapterProvider adapterProvider = SQLResultAdapterProvider.getInstance();
@@ -85,7 +82,7 @@ public final class SQLExecutor {
 
             Set<T> elements = new LinkedHashSet<>();
             while (resultSet.next()) {
-               elements.add(adapter.adaptResult(resultSet));
+                elements.add(adapter.adaptResult(resultSet));
             }
 
             return elements;

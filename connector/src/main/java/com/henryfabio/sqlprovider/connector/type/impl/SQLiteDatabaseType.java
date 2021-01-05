@@ -1,6 +1,7 @@
 package com.henryfabio.sqlprovider.connector.type.impl;
 
 import com.henryfabio.sqlprovider.connector.type.FileDatabaseType;
+import com.henryfabio.sqlprovider.connector.utils.FileUtils;
 import lombok.Builder;
 
 import java.io.File;
@@ -12,11 +13,12 @@ public final class SQLiteDatabaseType extends FileDatabaseType {
 
     @Builder
     public SQLiteDatabaseType(File file) {
-        super(file);
-        createFileIfNotExists();
-
-        driverClassName("org.sqlite.JDBC");
-        jdbcUrl("jdbc:sqlite:" + file);
+        super(
+                "org.sqlite.JDBC",
+                "jdbc:sqlite:" + file,
+                file
+        );
+        FileUtils.createFileIfNotExists(file);
     }
 
 }

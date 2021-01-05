@@ -1,39 +1,21 @@
 package com.henryfabio.sqlprovider.connector;
 
 import com.henryfabio.sqlprovider.connector.type.SQLDatabaseType;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.function.Consumer;
 
 /**
  * @author Henry Fábio
  */
+@Getter
 @RequiredArgsConstructor
-public final class SQLConnector {
+public abstract class SQLConnector {
 
     private final SQLDatabaseType databaseType;
 
-    public Connection connection() {
-        try {
-            return databaseType.getDataSource().getConnection();
-        } catch (SQLException t) {
-            t.printStackTrace();
-            return null;
-        }
-    }
-
-    public void consumeConnection(Consumer<Connection> consumer) {
-        try (Connection connection = connection()) {
-            consumer.accept(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void close() {
-        databaseType.getDataSource().close();
-    }
+    public abstract void consumeConnection(Consumer<Connection> consumer);
 
 }

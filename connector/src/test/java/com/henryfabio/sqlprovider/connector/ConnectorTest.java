@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class ConnectorTest {
 
     public static void main(String[] args) {
-        SQLConnector sqlConnector = mysqlDatabaseType().connector();
+        SQLConnector sqlConnector = sqliteDatabaseType().connect();
 
         sqlConnector.consumeConnection(connection -> {
             try (PreparedStatement statement = connection.prepareStatement("SELECT 1")) {

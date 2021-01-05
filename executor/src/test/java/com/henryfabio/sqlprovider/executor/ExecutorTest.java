@@ -5,7 +5,6 @@ import com.henryfabio.sqlprovider.connector.type.SQLDatabaseType;
 import com.henryfabio.sqlprovider.connector.type.impl.SQLiteDatabaseType;
 
 import java.io.File;
-import java.sql.SQLException;
 
 /**
  * @author Henry Fábio
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 public class ExecutorTest {
 
     public static void main(String[] args) {
-        SQLConnector sqlConnector = sqliteDatabaseType().connector();
+        SQLConnector sqlConnector = sqliteDatabaseType().connect();
         SQLExecutor sqlExecutor = new SQLExecutor(sqlConnector);
 
         sqlExecutor.updateQuery("CREATE TABLE IF NOT EXISTS users(" +
@@ -29,10 +28,11 @@ public class ExecutorTest {
             }
         });*/
 
-        System.out.println(sqlExecutor.manyResultQuery("SELECT * FROM users WHERE name = ?",
-                statement -> {
-                    statement.set(1, "Henry");
-                }, TestResultAdapter.class));
+        System.out.println(sqlExecutor.resultManyQuery(
+                "SELECT * FROM users WHERE name = ?",
+                statement -> statement.set(1, "Henry"),
+                TestResultAdapter.class)
+        );
     }
 
     private static SQLDatabaseType sqliteDatabaseType() {

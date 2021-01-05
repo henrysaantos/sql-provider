@@ -1,9 +1,7 @@
 package com.henryfabio.sqlprovider.executor.result;
 
-import com.henryfabio.sqlprovider.executor.statement.SimpleStatement;
 import lombok.RequiredArgsConstructor;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
